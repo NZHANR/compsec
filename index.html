@@ -68,11 +68,17 @@
           color: #aa93be;
           font-size:11px;
         }
+        .hashed-password {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+        }
       </style>
       <body>
         <div class="container">
           <form action="">
             <h1>Simple Login Form</h1>
+            <center><p><i>Form created by Nazihah Anuar MEC244003</i></p><br><br></center>
             <div class="form group">
               <label for="">Email ID:</label>
               <input type="text" class="form-control" required>
@@ -82,8 +88,35 @@
               <input type="password" class="form-control" required>
             </div>
             <input type="submit" class="btn" value="Login">
-            <center><br><p><i>Form created by Nazihah Anuar MEC244003</i></p></center>
           </form>
         </div>
+        <div class="hashed-password" id="hashed-password"></div>
+    </div>
+
+    <script>
+        async function hashPassword(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const passwordInput = document.getElementById('password');
+            const hashedPasswordDisplay = document.getElementById('hashed-password');
+
+            // Get the password value
+            const password = passwordInput.value;
+
+            // Encode the password as a UTF-8 string
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+
+            // Hash the password using SHA-256
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+
+            // Convert the hash buffer to a hex string
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+
+            // Display the hashed password
+            hashedPasswordDisplay.textContent = `Hashed Password: ${hashHex}`;
+        }
+    </script>
       </body>
   </head>
