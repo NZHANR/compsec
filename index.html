@@ -12,12 +12,13 @@
         }
         body{
           min-height: 100vh;
-          background: #ebebeb;
+          background: #f5eefc;
           display: flex;
           font-family: sans-serif;
         }
         .container{
           margin: auto;
+          margin-top: 50px;
           width: 500px;
           max-width: 90%;
         }
@@ -63,12 +64,8 @@
           background: #00639c;
         }
         .container form p{
-          color: #b90094;
-          font-size:10px;
-        }
-        .container form h3{
-          color: black;
-          font-size:10px;
+          color: #aa93be;
+          font-size:11px;
         }
       </style>
       <body>
@@ -83,11 +80,7 @@
               <label for="">Password:</label>
               <input type="password" class="form-control" required>
             </div>
-            <input type="submit" class="btn" onclick="hashPassword()" value="Login">
-            <div class="result" style="display: none;">
-                <h3>Hashed Password:</h3>
-                <p  id="hashedPassword"></p>
-            </div>
+            <input type="submit" class="btn" value="Login">
             <center><br><p><i>Form created by Nazihah Anuar MEC244003</i></p></center>
           </form>
         </div>
